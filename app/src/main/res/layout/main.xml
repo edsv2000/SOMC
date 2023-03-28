@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_weight=".1"
+            android:layout_height="wrap_content"
+            android:background="#EFF6FE">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="40dp"
+                android:text="TEXTO"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/primary"
+
+            />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:background="#EFF6FE"
+            />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:layout_height="0dp"
+            android:layout_weight=".8"
+            android:background="#285FB4"
+            android:paddingTop="10dp"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/inventario"
+                android:layout_width="50dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_outline_inventory_24"
+                android:text="Inventario"
+                android:elevation="0dp"
+                android:textSize="6dp"
+                android:textColor="@color/white"
+                android:background="@color/primary"
+                android:drawablePadding="-12dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pedidos"
+                android:layout_width="50dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_outline_featured_play_list_24"
+                android:text="pedidos"
+                android:elevation="0dp"
+                android:textSize="6dp"
+                android:textColor="@color/white"
+                android:background="@color/primary"
+                android:drawablePadding="-12dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/formulas"
+                android:layout_width="50dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_outline_margin_24"
+                android:text="Formulas"
+                android:elevation="0dp"
+                android:textSize="6dp"
+                android:textColor="@color/white"
+                android:background="@color/primary"
+                android:drawablePadding="-12dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/produccion"
+                android:layout_width="50dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_outline_departure_board_24"
+                android:text="Produccion"
+                android:elevation="0dp"
+                android:textSize="6dp"
+                android:textColor="@color/white"
+                android:background="@color/primary"
+                android:drawablePadding="-12dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/more"
+                android:layout_width="50dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_baseline_more_horiz_24"
+                android:text="more"
+                android:elevation="0dp"
+                android:textSize="6dp"
+                android:textColor="@color/white"
+                android:background="@color/primary"
+                android:drawablePadding="-12dp"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
