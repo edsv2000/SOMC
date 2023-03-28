@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".formulas"
+    tools:context=".produccion"
     android:paddingHorizontal="10dp"
     android:background="#EFF6FE">
 
@@ -19,6 +19,119 @@
         android:padding="5dp"
         android:hint="BUSCADOR..."
         android:background="@color/white"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <ImageView android:id="@+id/img_formula"
+                    android:layout_width="?android:attr/listPreferredItemHeight"
+                    android:layout_height="?android:attr/listPreferredItemHeight"
+                    android:contentDescription="fotografía"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_margin="10dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView android:id="@+id/nombre_formula"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FORMULA"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:maxLines="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/contenedor_registrado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/nombre"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="REGISTRADO "/>
+                    <TextView
+                        android:id="@+id/fecha_registrado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20/20/3004"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/contenedor_estado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="ESTADO "/>
+                    <TextView
+                        android:id="@+id/estado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" ESTADO"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/primary"
+                    android:background="@color/white"
+                    android:textStyle="bold"
+                    android:text="DETALLLES"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
