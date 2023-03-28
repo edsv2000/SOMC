@@ -19,7 +19,6 @@ public class Main extends AppCompatActivity {
         getSupportActionBar().hide();
         configNav();
     }
-
     private void configNav() {
 
 
