@@ -49,6 +49,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/primary"
                     android:maxLines="1"
+                    android:textSize="15dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
@@ -67,7 +68,8 @@
                         android:id="@+id/nombre_empresa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="EMPRESA"/>
+                        android:text="EMPRESA"
+                        android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -84,12 +86,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="FECHA "/>
+                        android:text="FECHA "
+                        android:textSize="14dp"/>
                     <TextView
                         android:id="@+id/fecha_registrado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#NUMERO"/>
+                        android:text="#NUMERO"
+                        android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -106,12 +110,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="ESTADO "/>
+                        android:text="ESTADO "
+                        android:textSize="14dp"/>
                     <TextView
                         android:id="@+id/estado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" ESTADO"/>
+                        android:text=" ESTADO"
+                        android:textSize="14dp"
+                        />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -128,6 +135,7 @@
                     android:textColor="@color/primary"
                     android:background="@color/white"
                     android:textStyle="bold"
+                    android:textSize="15dp"
                     android:text="DETALLLES"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>

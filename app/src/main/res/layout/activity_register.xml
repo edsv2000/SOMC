@@ -5,24 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#EFF6FE">
 
+
+
     <LinearLayout
-        android:id="@+id/head"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#285FB4"
         app:layout_constraintTop_toTopOf="parent"
-
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/head"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp"
+        android:paddingHorizontal="10dp"
         android:background="#EFF6FE"
         android:layout_marginVertical="40dp"
         android:layout_marginHorizontal="20dp"
@@ -31,49 +22,100 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOG IN"
+            android:text="¡REGISTRATE!"
             android:textColor="#285FB4"
             android:textSize="21dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empieza a administrar tu negocio a la manera de SOMC."
+            android:textColor="#285FB4"
+            android:textSize="11dp"
+            android:layout_marginBottom="20dp"
+            />
         <EditText
 
             android:id="@+id/company"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="NOMBRE DE LA EMPRESA"
+            android:background="@color/white"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_marginBottom="7dp"/>
+        <EditText
 
+            android:id="@+id/giro"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Empresa"
+            android:hint="GIRO DE LA EMPRESA"
             android:background="@color/white"
-            android:textSize="15dp"
-            android:padding="10dp"/>
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_marginBottom="7dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:background="#285FB4"
+            android:layout_marginBottom="7dp"
+            />
+
         <EditText
-            android:id="@+id/user"
-            android:layout_marginTop="5dp"
+
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Usuario"
+            android:hint="NOMBRE COMPLETO"
             android:background="@color/white"
-            android:textSize="15dp"
-            android:padding="10dp"/>
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_marginBottom="7dp"/>
+
         <EditText
+
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="CORREO"
+            android:background="@color/white"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_marginBottom="7dp"/>
+
+        <EditText
+
             android:id="@+id/password"
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Contraseña"
+            android:hint="CONTRASEÑA"
             android:background="@color/white"
-            android:textSize="15dp"
-            android:padding="10dp"/>
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_marginBottom="7dp"/>
+
+        <EditText
+
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="CONFIRMACIÓN DE CONTRASEÑA"
+            android:background="@color/white"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_marginTop="10dp"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4CAF50"
+            android:background="#3DD05D"
             android:textStyle="bold"
             android:textColor="#FFF"
-            android:text="Login"/>
+            android:text="REGISTRARME"/>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,14 +125,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Aun no tiene cuenta? "
+            android:text="¿Ya tienes cuenta? "
             android:textColor="#474747"
             />
         <TextView
+            android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#285FB4"
-            android:text="Registrarse"
+            android:text="Iniciar"
             android:textStyle="bold"
 
             />

@@ -44,6 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="#PRODUCCION"
+                    android:textSize="15dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold"
                     android:textColor="@color/primary"
@@ -65,12 +66,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="LOTE. "/>
+                        android:text="LOTE. "
+                        android:textSize="14dp"/>
                     <TextView
                         android:id="@+id/numero_lote"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#NUMERO"/>
+                        android:text="#NUMERO"
+                        android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -87,12 +90,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="No. PEDIDO "/>
+                        android:text="No. PEDIDO "
+                        android:textSize="14dp"/>
                     <TextView
                         android:id="@+id/numero_pedido"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#NUMERO"/>
+                        android:text="#NUMERO"
+                        android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -109,12 +114,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="ESTADO "/>
+                        android:text="ESTADO "
+                        android:textSize="14dp"/>
                     <TextView
                         android:id="@+id/estado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" ESTADO"/>
+                        android:text=" ESTADO"
+                        android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -131,7 +138,8 @@
                     android:textColor="@color/primary"
                     android:background="@color/white"
                     android:textStyle="bold"
-                    android:text="DETALLLES"/>
+                    android:text="DETALLLES"
+                    android:textSize="15dp"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -59,6 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FORMULA"
+                    android:textSize="15dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold"
                     android:textColor="@color/primary"
@@ -80,12 +81,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="REGISTRADO "/>
+                        android:text="REGISTRADO "
+                        android:textSize="14dp"/>
                     <TextView
                         android:id="@+id/fecha_registrado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20/20/3004"/>
+                        android:text="20/20/3004"
+                        android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -103,12 +106,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="ESTADO "/>
+                        android:text="ESTADO "
+                        android:textSize="14dp"/>
                     <TextView
                         android:id="@+id/estado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" ESTADO"/>
+                        android:text=" ESTADO"
+                        android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -125,6 +130,7 @@
                     android:textColor="@color/primary"
                     android:background="@color/white"
                     android:textStyle="bold"
+                    android:textSize="15dp"
                     android:text="DETALLLES"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
