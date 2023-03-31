@@ -18,7 +18,14 @@ public class Main extends AppCompatActivity {
         setContentView(view);
         getSupportActionBar().hide();
         configNav();
+        configMain();
     }
+
+    private void configMain() {
+
+        binding.name.setText("Dashboard");
+    }
+
     private void configNav() {
 
 
@@ -32,7 +39,7 @@ public class Main extends AppCompatActivity {
                                     .addToBackStack("Inventario")
                                     .commit();
 
-                            binding.name.setText("INVENTARIOS");
+                            binding.name.setText("Inventario");
                 }
             });
         binding.formulas.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +51,7 @@ public class Main extends AppCompatActivity {
                         .setReorderingAllowed(true)
                         .addToBackStack("Formulas")
                         .commit();
-                binding.name.setText("FORMULAS");
+                binding.name.setText("Formulas");
             }
         });
 
@@ -57,7 +64,7 @@ public class Main extends AppCompatActivity {
                         .setReorderingAllowed(true)
                         .addToBackStack("Pedidos")
                         .commit();
-                binding.name.setText("PEDIDOS");
+                binding.name.setText("Pedidos");
             }
         });
         binding.produccion.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +76,7 @@ public class Main extends AppCompatActivity {
                         .setReorderingAllowed(true)
                         .addToBackStack("Produccion")
                         .commit();
-                binding.name.setText("PRODUCCION");
+                binding.name.setText("Produccion");
             }
         });
         binding.more.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +88,7 @@ public class Main extends AppCompatActivity {
                         .setReorderingAllowed(true)
                         .addToBackStack("Mas")
                         .commit();
-                binding.name.setText("MAS");
+                binding.name.setText("Mas");
             }
         });
     }

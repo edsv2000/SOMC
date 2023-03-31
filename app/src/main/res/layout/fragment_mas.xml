@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mas">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".mas"
+    android:padding="10dp"
+    android:background="#EFF6FE">
 
-    <!-- TODO: Update blank fragment layout -->
+  <LinearLayout
+      app:layout_constraintTop_toTopOf="parent"
+      android:id="@+id/contenedor_oc"
+      android:layout_width="match_parent"
+      android:layout_marginTop="10dp"
+      android:layout_height="80dp"
+      android:padding="10dp"
+      android:background="@color/white"
+      android:orientation="horizontal"
+      >
+    <ImageView
+        android:id="@+id/img_oc"
+        android:layout_width="?android:attr/listPreferredItemHeight"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:contentDescription="fotografía"
+        android:background="@color/primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+       />
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:text="Ordenes de compra"
+        android:padding="10dp"
+        android:textColor="@color/primary"/>
+  </LinearLayout>
 
-</FrameLayout>
+  <LinearLayout
+      android:id="@+id/contenedor_proveedores"
+      app:layout_constraintTop_toBottomOf="@+id/contenedor_oc"
+      android:layout_width="match_parent"
+      android:layout_marginTop="10dp"
+      android:layout_height="80dp"
+      android:padding="10dp"
+      android:background="@color/white"
+      android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/img_formula"
+        android:layout_width="?android:attr/listPreferredItemHeight"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:contentDescription="fotografía"
+        android:background="@color/primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:text="Proveeedores"
+        android:padding="10dp"
+        android:textColor="@color/primary"/>
+  </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
