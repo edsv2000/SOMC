@@ -49,7 +49,7 @@ public class adapterProveedor extends RecyclerView.Adapter<adapterProveedor.View
             super(itemView);
             numero_pedido = itemView.findViewById(R.id.numero_pedido);
             nombre_empresa = itemView.findViewById(R.id.nombre_empresa);
-            telefono_proveedor = itemView.findViewById(R.id.fecha_registrado);
+            telefono_proveedor = itemView.findViewById(R.id.telefono_proveedor);
             email_proveedor = itemView.findViewById(R.id.email_proveedor);
         }
 

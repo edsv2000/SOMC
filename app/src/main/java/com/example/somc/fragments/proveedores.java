@@ -38,13 +38,13 @@ public class proveedores extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ordenes_de_compras, container, false);
+        View view = inflater.inflate(R.layout.fragment_proveedores, container, false);
         proveedorData_list.add(new proveedorData("1","PINTURAS","5567123967","pinturas@gmail.com"));
         proveedorData_list.add(new proveedorData("2","QUIMICOS","5567178967","quimicos@gmail.com"));
         proveedorData_list.add(new proveedorData("3","TINTES","5567155967","tintes@gmail.com"));
         proveedorData_list.add(new proveedorData("4","EMPRESAQUIMICA","5567178967","empresaquimica@gmail.com"));
         proveedorData_list.add(new proveedorData("5","QUIMICANETA","5567178967","quimicaneta@gmail.com"));
-        RecyclerView recyclerView  = view.findViewById(R.id.recyclerOC);
+        RecyclerView recyclerView  = view.findViewById(R.id.recyclerProveedores);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         adapterProveedor adapter = new adapterProveedor(proveedorData_list);
         recyclerView.setAdapter(adapter);
