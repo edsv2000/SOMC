@@ -3,64 +3,52 @@ package com.example.somc.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.somc.R;
+import com.example.somc.adaptadores.adapterOC;
+import com.example.somc.adaptadores.adapterProveedor;
+import com.example.somc.data.OCData;
+import com.example.somc.data.pedidosData;
+import com.example.somc.data.proveedorData;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link proveedores#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class proveedores extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ArrayList<proveedorData> proveedorData_list = new ArrayList<>();
 
     public proveedores() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment proveedores.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static proveedores newInstance(String param1, String param2) {
-        proveedores fragment = new proveedores();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_proveedores, container, false);
+        View view = inflater.inflate(R.layout.fragment_ordenes_de_compras, container, false);
+        proveedorData_list.add(new proveedorData("1","PINTURAS","5567123967","pinturas@gmail.com"));
+        proveedorData_list.add(new proveedorData("2","QUIMICOS","5567178967","quimicos@gmail.com"));
+        proveedorData_list.add(new proveedorData("3","TINTES","5567155967","tintes@gmail.com"));
+        proveedorData_list.add(new proveedorData("4","EMPRESAQUIMICA","5567178967","empresaquimica@gmail.com"));
+        proveedorData_list.add(new proveedorData("5","QUIMICANETA","5567178967","quimicaneta@gmail.com"));
+        RecyclerView recyclerView  = view.findViewById(R.id.recyclerOC);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        adapterProveedor adapter = new adapterProveedor(proveedorData_list);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 }

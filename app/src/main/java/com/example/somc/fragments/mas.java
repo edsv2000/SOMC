@@ -1,31 +1,18 @@
 package com.example.somc.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.LinearLayout;
 import com.example.somc.R;
-import com.example.somc.adaptadores.adapterFormulas;
-import com.example.somc.data.formulasData;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link mas#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.somc.activities.login;
 public class mas extends Fragment {
 
-
-
-    public mas() {
-        // Required empty public constructor
-    }
+    public mas() {}
 
 
     @Override
@@ -40,7 +27,43 @@ public class mas extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mas, container, false);
 
+        LinearLayout contenedorOC = view.findViewById(R.id.contenedor_oc);
+        contenedorOC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main, ordenes_de_compras.class, null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("Mas")
+                        .commit();
+            }
+        });
 
+        LinearLayout contenedorProveedores = view.findViewById(R.id.contenedor_proveedores);
+
+        contenedorProveedores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main, proveedores.class, null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("Mas")
+                        .commit();
+            }
+
+        });
+
+        LinearLayout contenedorLogOut = view.findViewById(R.id.contenedor_logout);
+
+        contenedorLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), login.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

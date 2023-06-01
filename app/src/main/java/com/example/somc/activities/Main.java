@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.somc.R;
 import com.example.somc.databinding.MainBinding;
 import com.example.somc.fragments.formulas;
@@ -100,9 +99,6 @@ public class Main extends AppCompatActivity {
         });
     }
 
-    private void setup() {
-
-    }
 
 
 }
