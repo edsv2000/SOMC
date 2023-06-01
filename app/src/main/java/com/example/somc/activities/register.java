@@ -1,4 +1,4 @@
-package com.example.somc;
+package com.example.somc.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.somc.activities.Main;
+import com.example.somc.activities.login;
 import com.example.somc.databinding.ActivityRegisterBinding;
 public class register extends AppCompatActivity {
     ActivityRegisterBinding binding;

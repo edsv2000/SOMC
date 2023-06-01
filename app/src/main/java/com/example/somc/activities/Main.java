@@ -1,10 +1,12 @@
-package com.example.somc;
+package com.example.somc.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.somc.R;
 import com.example.somc.databinding.MainBinding;
 import com.example.somc.fragments.formulas;
 import com.example.somc.fragments.inventario;

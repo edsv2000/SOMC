@@ -1,4 +1,4 @@
-package com.example.somc;
+package com.example.somc.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
