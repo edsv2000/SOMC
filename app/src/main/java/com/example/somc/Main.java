@@ -6,6 +6,11 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 import com.example.somc.databinding.MainBinding;
+import com.example.somc.fragments.formulas;
+import com.example.somc.fragments.inventario;
+import com.example.somc.fragments.mas;
+import com.example.somc.fragments.pedidos;
+import com.example.somc.fragments.produccion;
 
 
 public class Main extends AppCompatActivity {

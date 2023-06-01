@@ -1,34 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.produccion"
-    android:paddingHorizontal="10dp"
-    android:background="#EFF6FE">
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp">
 
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/search"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:textSize="15dp"
-        android:padding="5dp"
-        android:hint="BUSCADOR..."
-        android:background="@color/white"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/search"
-        android:background="@color/white"
-        android:padding="10dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -37,13 +17,28 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="290dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <ImageView android:id="@+id/img_formula"
+                    android:layout_width="?android:attr/listPreferredItemHeight"
+                    android:layout_height="?android:attr/listPreferredItemHeight"
+                    android:contentDescription="fotografía"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_margin="10dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView android:id="@+id/numero_produccion"
+                <TextView android:id="@+id/nombre_formula"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="#PRODUCCION"
+                    android:text="FORMULA"
                     android:textSize="15dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold"
@@ -54,7 +49,7 @@
                     app:layout_constraintEnd_toEndOf="parent"/>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/contenedor_lote"
+                    android:id="@+id/contenedor_registrado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/nombre"
@@ -66,46 +61,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="LOTE. "
+                        android:text="REGISTRADO "
                         android:textSize="14dp"/>
                     <TextView
-                        android:id="@+id/numero_lote"
+                        android:id="@+id/fecha_registrado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#NUMERO"
+                        android:text="20/20/3004"
                         android:textSize="14dp"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/contenedor_pedido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/contenedor_lote"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
 
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:text="No. PEDIDO "
-                        android:textSize="14dp"/>
-                    <TextView
-                        android:id="@+id/numero_pedido"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="#NUMERO"
-                        android:textSize="14dp"/>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/contenedor_produccion"
+                    android:id="@+id/contenedor_estado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/contenedor_pedido"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
 
@@ -138,14 +110,12 @@
                     android:textColor="@color/primary"
                     android:background="@color/white"
                     android:textStyle="bold"
-                    android:text="DETALLLES"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:text="DETALLLES"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
