@@ -3,7 +3,6 @@ package com.example.somc.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.example.somc.R;
@@ -13,7 +12,6 @@ import com.example.somc.fragments.inventario;
 import com.example.somc.fragments.mas;
 import com.example.somc.fragments.pedidos;
 import com.example.somc.fragments.produccion;
-import com.example.somc.secondsViews.detailsFormulas;
 
 
 public class Main extends AppCompatActivity {

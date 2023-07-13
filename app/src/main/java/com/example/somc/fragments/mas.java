@@ -27,18 +27,7 @@ public class mas extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mas, container, false);
 
-        LinearLayout contenedorOC = view.findViewById(R.id.contenedor_oc);
-        contenedorOC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.main, ordenes_de_compras.class, null)
-                        .setReorderingAllowed(true)
-                        .addToBackStack("Mas")
-                        .commit();
-            }
-        });
+
 
         LinearLayout contenedorProveedores = view.findViewById(R.id.contenedor_proveedores);
 

@@ -1,6 +1,5 @@
 package com.example.somc.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -54,7 +53,7 @@ public class formulas extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerFormulas);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        adapter = new adapterFormulas(formulasData_list); // Mover la inicialización del adaptador aquí
+        adapter = new adapterFormulas(formulasData_list,getContext()); // Mover la inicialización del adaptador aquí
         recyclerView.setAdapter(adapter);
 
         // Realizar la consulta a la API para obtener los datos de las fórmulas
