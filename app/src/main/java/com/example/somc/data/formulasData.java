@@ -37,4 +37,7 @@ public class formulasData {
     public Integer getImgFormula() {
         return imgFormula;
     }
+
+
+
 }

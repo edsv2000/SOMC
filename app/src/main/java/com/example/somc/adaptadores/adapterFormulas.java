@@ -16,16 +16,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.somc.R;
+import com.example.somc.data.formulasData;
 import com.example.somc.secondsViews.detailsFormulas;
 
 import java.util.ArrayList;
 
 public class adapterFormulas extends RecyclerView.Adapter<adapterFormulas.ViewHolder> {
     private ArrayList<com.example.somc.data.formulasData> formulasData;
+    private ArrayList<formulasData> formulasData_list;
 
     public adapterFormulas(ArrayList<com.example.somc.data.formulasData> formulasData) {
         this.formulasData = formulasData;
     }
+
+    
 
     @NonNull
     @Override
@@ -69,6 +73,12 @@ public class adapterFormulas extends RecyclerView.Adapter<adapterFormulas.ViewHo
     @Override
     public int getItemCount() {
         return formulasData.size();
+    }
+
+    public void setFilteredList(ArrayList<formulasData> filteredList) {
+        formulasData.clear();
+        formulasData.addAll(filteredList);
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
