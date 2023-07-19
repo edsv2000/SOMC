@@ -16,6 +16,11 @@
     <string-array name="status_pedido">
         <item>Pendiente</item>
         <item>Autorizado</item>
-        <item>En produccion</item>
     </string-array>
+
+    <string-array name="status_produccion">
+        <item>Marcar como surtido</item>
+
+    </string-array>
+
 </resources>

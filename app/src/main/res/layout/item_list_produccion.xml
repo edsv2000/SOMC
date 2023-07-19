@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="LOTE. "
+                    android:text="CLIENTE. "
                     android:textSize="14dp"/>
                 <TextView
                     android:id="@+id/numero_lote"
@@ -104,18 +104,87 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/contenedor_productos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/contenedor_produccion"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="PRODUCTOS"
+                    android:textColor="@color/primary"
+                    android:textSize="14dp"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/contenedor_detalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/contenedor_produccion"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+
+                >
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:stretchColumns="*">
+
+                    <!-- Fila 1 -->
+                    <TableRow>
+                        <TextView
+                            android:text="ID"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:background="@color/primary"
+                            android:layout_margin="1dp"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:text="FORMULA"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:background="@color/primary"
+                            android:layout_margin="1dp"
+                            android:padding="10dp"/>
+                        <TextView
+                            android:text="CANTIDAD"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:background="@color/primary"
+                            android:layout_margin="1dp"
+                            android:padding="10dp"/>
+                    </TableRow>
+
+
+
+                </TableLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_marginTop="10dp"
+                android:id="@+id/spinnerOption"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/primary"
-                android:background="@color/white"
                 android:textStyle="bold"
                 android:drawableEnd="@drawable/baseline_remove_red_eye_24"
                 android:paddingEnd="15dp"
