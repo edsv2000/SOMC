@@ -28,8 +28,15 @@ public class Main extends AppCompatActivity {
     }
 
     private void configMain() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.main, inventario.class, null)
+                .setReorderingAllowed(true)
+                .addToBackStack("Inventario")
+                .commit();
 
-        binding.name.setText("Dashboard");
+        binding.name.setText("Inventario");
+
     }
 
     private void configNav() {

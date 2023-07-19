@@ -67,7 +67,7 @@ public class registerformula extends AppCompatActivity implements adapterNewForm
                 descripcion = findViewById(R.id.editTextDescripcion);
                 String datadescripcion = descripcion.getText().toString();
 
-                if (datadescripcion.isEmpty()) {
+                if (datadescripcion.isEmpty())  {
                     Toast.makeText(registerformula.this, "Ingrese el nombre de la formula", Toast.LENGTH_SHORT).show();
                 } else if (formulaData.isEmpty()) {
                     Toast.makeText(registerformula.this, "La lista de ingredientes está vacía", Toast.LENGTH_SHORT).show();

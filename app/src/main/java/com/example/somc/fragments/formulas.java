@@ -118,11 +118,12 @@ public class formulas extends Fragment {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("ID_formula");
                         String descripcion = jsonObject.getString("Descripcion");
                         String fechaCreacion = jsonObject.getString("Fecha_creacion");
                         String idUsuario = jsonObject.getString("ID_usuario");
 
-                        formulasList.add(new formulasData(descripcion, "", fechaCreacion, idUsuario, R.drawable.caja));
+                        formulasList.add(new formulasData(id,descripcion, "", fechaCreacion, idUsuario, R.drawable.caja));
                     }
 
                 } catch (JSONException e) {
@@ -142,7 +143,7 @@ public class formulas extends Fragment {
                 if (formulasList.size() == 0) {
                     // Mostrar un mensaje de "sin resultados" si no hay fórmulas disponibles
                     // Puedes agregar un elemento especial a la lista para mostrar el mensaje
-                    formulasData_list.add(new formulasData("No hay fórmulas disponibles", "", "", "", R.drawable.caratriste));
+                    formulasData_list.add(new formulasData("","No hay fórmulas disponibles", "", "", "", R.drawable.caratriste));
                 }
 
                 adapter.notifyDataSetChanged();
