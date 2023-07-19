@@ -25,7 +25,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -74,10 +77,192 @@ public class pedidos extends Fragment implements adapterPedidos.ListenerPedido {
     @Override
     public void onListenerPedido(pedidosData data, String selectedItem) {
         if (selectedItem != null ) {
-            Toast.makeText(getContext(), data.getStatus(), Toast.LENGTH_SHORT).show();
+            if (data.getStatus().equals("Autorizado") && selectedItem.equals("Mandar a producción")){
+                // Crea el JSON con los datos a enviar al servidor
+                JSONObject jsonData = new JSONObject();
+                try {
+                    jsonData.put("ID_pedido", data.getNumero());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                String urlString = "https://api.habtek.com.mx/somcback/tables/produccion/insert.php"; // Reemplaza con la URL de tu API
+                setProduccion produccion = new setProduccion();
+                produccion.execute(urlString, jsonData.toString());
+
+                // Crea el JSON con los datos a enviar al servidor
+                JSONObject jsonData2 = new JSONObject();
+                try {
+                    jsonData2.put("ID_pedido", data.getNumero());
+                    jsonData2.put("Estado", "En produccion");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                String urlString2 = "https://api.habtek.com.mx/somcback/tables/pedidos/updateStatus.php";
+                CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
+                estado.execute(urlString2, jsonData2.toString());
+
+                adapter2.notifyDataSetChanged();
+            } else if (selectedItem.equals("Autorizar pedido") && data.getStatus().equals("Pendiente")) {
+                // Crea el JSON con los datos a enviar al servidor
+                JSONObject jsonData = new JSONObject();
+                try {
+                    jsonData.put("ID_pedido", data.getNumero());
+                    jsonData.put("Estado", "Autorizado");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                String urlString = "https://api.habtek.com.mx/somcback/tables/pedidos/updateStatus.php";
+                CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
+                estado.execute(urlString, jsonData.toString());
+            }else if (selectedItem.equals("Cancelar")) {
+                // Crea el JSON con los datos a enviar al servidor
+                JSONObject jsonData = new JSONObject();
+                try {
+                    jsonData.put("ID_pedido", data.getNumero());
+                    jsonData.put("Estado", "Cancelado");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                String urlString = "https://api.habtek.com.mx/somcback/tables/pedidos/updateStatus.php";
+                CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
+                estado.execute(urlString, jsonData.toString());
+            }
         }
     }
 
+    public class CambiarEstadoPedidoAsyncTask extends AsyncTask<String, Void, String> {
+
+        private static final String TAG = "CambiarEstadoPedido";
+
+        @Override
+        protected String doInBackground(String... params) {
+            String urlString = params[0];
+            String jsonData = params[1];
+
+            String result = "";
+
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setRequestProperty("Content-Type", "application/json");
+                urlConnection.setDoOutput(true);
+
+                OutputStream outputStream = urlConnection.getOutputStream();
+                outputStream.write(jsonData.getBytes());
+                outputStream.flush();
+                outputStream.close();
+
+                int responseCode = urlConnection.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    InputStream inputStream = urlConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line);
+                    }
+                    bufferedReader.close();
+                    inputStream.close();
+
+                    result = stringBuilder.toString();
+                } else {
+                    result = "Error en la conexión: " + responseCode;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                result = "Error en la conexión: " + e.getMessage();
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                String status = jsonObject.getString("status");
+                String message = jsonObject.getString("message");
+
+                // Aquí puedes manejar la respuesta del servidor según tus necesidades
+
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public class setProduccion extends AsyncTask<String, Void, String> {
+
+        private static final String TAG = "setProduccion";
+
+        @Override
+        protected String doInBackground(String... params) {
+            String urlString = params[0];
+            String jsonData = params[1];
+
+            String result = "";
+
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setRequestProperty("Content-Type", "application/json");
+                urlConnection.setDoOutput(true);
+
+                OutputStream outputStream = urlConnection.getOutputStream();
+                outputStream.write(jsonData.getBytes());
+                outputStream.flush();
+                outputStream.close();
+
+                int responseCode = urlConnection.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    InputStream inputStream = urlConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line);
+                    }
+                    bufferedReader.close();
+                    inputStream.close();
+
+                    result = stringBuilder.toString();
+                } else {
+                    result = "Error en la conexión: " + responseCode;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                result = "Error en la conexión: " + e.getMessage();
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                String status = jsonObject.getString("status");
+                String message = jsonObject.getString("message");
+
+                // Aquí puedes manejar la respuesta del servidor según tus necesidades
+
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public class PedidosRequest extends AsyncTask<Void, Void, JSONArray> {
 
@@ -150,5 +335,7 @@ public class pedidos extends Fragment implements adapterPedidos.ListenerPedido {
                 // ...
             }
         }
+
+
     }
 }

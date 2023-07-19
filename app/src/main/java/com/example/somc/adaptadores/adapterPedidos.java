@@ -100,7 +100,12 @@ public class adapterPedidos extends RecyclerView.Adapter<adapterPedidos.ViewHold
             } else if (data.getStatus().equals("Autorizado")) {
                 adapter.add("Mandar a producción");
             }
-            adapter.add("Cancelar");
+
+            if (!data.getStatus().equals("Cancelado")){
+                adapter.add("Cancelar");
+            }else{
+                option.setVisibility(View.INVISIBLE);
+            }
 
             option.setAdapter(adapter);
 
