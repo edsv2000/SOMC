@@ -5,28 +5,34 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.produccion"
-    android:paddingHorizontal="10dp"
+    android:padding="10dp"
     android:background="#EFF6FE">
 
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/search"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:textSize="15dp"
-        android:padding="5dp"
-        android:hint="BUSCADOR..."
-        android:background="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPedidos"
-        app:layout_constraintTop_toBottomOf="@id/search"
-        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="600dp"
          />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addPedido"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        app:layout_constraintTop_toBottomOf="@id/recyclerPedidos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="#55B601"
+        android:text="NUEVO PEDIDO"
+        android:layout_marginBottom="5dp"
+        tools:layout_editor_absoluteX="166dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteY="668dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

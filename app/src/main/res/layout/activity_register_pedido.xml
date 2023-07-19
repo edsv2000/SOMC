@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".secondsViews.registerPedido">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#EFF6FE">
+
+
+
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="#EFF6FE"
+
+        android:paddingVertical="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REGISTRATE UN PEDIDO"
+            android:textColor="#285FB4"
+            android:textSize="18dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"/>
+
+        <EditText
+
+            android:id="@+id/cliente"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="CLIENTE"
+            android:inputType="text"
+            android:background="@color/white"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_marginBottom="7dp"/>
+
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="7dp"
+            />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PRODUCTO"
+            android:textStyle="bold"
+            android:textColor="#285FB4"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRegisterPedido"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/main">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_agregar"
+            android:layout_width="244dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#285FB4"
+            android:text="Agregar articulo"
+            android:textColor="#FFF"
+            android:textStyle="bold" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_registar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#55B601"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            android:layout_margin="10dp"
+            android:text="REGISTRAR"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

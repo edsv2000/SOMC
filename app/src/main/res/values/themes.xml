@@ -18,4 +18,10 @@
     <style name="SplashScreen" parent="Theme.SplashScreen">
         <item name="android:windowBackground">@color/black</item>
     </style>
+    <style name="Theme.SOMC.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.SOMC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.SOMC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
