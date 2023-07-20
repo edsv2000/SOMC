@@ -170,7 +170,7 @@ public class registerPedido extends AppCompatActivity implements adapterNewArtic
 
     public class PostAsyncTask extends AsyncTask<Void, Void, String> {
         private static final String TAG = "PostAsyncTask";
-        private static final String API_URL = "https://api.habtek.com.mx/somcback/tables/pedidos/insert.php"; // Reemplaza con la URL correcta
+        private static final String API_URL = "https://api.habtek.com.mx/somcback/src/tables/pedidos/insert.php"; // Reemplaza con la URL correcta
 
         private int idCliente;
         private String estado;
@@ -260,7 +260,7 @@ public class registerPedido extends AppCompatActivity implements adapterNewArtic
     }
     public class FormulasRequest extends AsyncTask<String, Void, JSONObject> {
 
-        private static final String API_URL = "https://api.habtek.com.mx/somcback/tables/formulas/search.php";
+        private static final String API_URL = "https://api.habtek.com.mx/somcback/src/tables/formulas/search.php";
 
         private String idFormula;
         private String cantidad;

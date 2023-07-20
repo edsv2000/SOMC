@@ -83,7 +83,7 @@ public class formulas extends Fragment {
         @Override
         protected ArrayList<formulasData> doInBackground(Void... voids) {
             // Realizar la llamada a la API y obtener la respuesta JSON
-            String apiUrl = "https://api.habtek.com.mx/somcback/tables/formulas/getAll.php";
+            String apiUrl = "https://api.habtek.com.mx/somcback/src/tables/formulas/getAll.php";
             StringBuilder response = new StringBuilder();
 
             try {

@@ -60,7 +60,7 @@ public class login extends AppCompatActivity {
     }
 
     private void login(String pass, String email) {
-        String url = "https://api.habtek.com.mx/somcback/tables/usuarios/login.php";
+        String url = "https://api.habtek.com.mx/somcback/src/tables/usuarios/login.php";
         String jsonInputString = "{\"contrasena\":\"" + pass + "\",\"correo_electronico\":\"" + email + "\"}";
 
         new ApiCallTask(email).execute(url, jsonInputString);

@@ -96,7 +96,7 @@ public class registerformula extends AppCompatActivity implements adapterNewForm
                         e.printStackTrace();
                     }
 
-                    String url = "http://api.habtek.com.mx/somcback/tables/formulas/insert.php";
+                    String url = "http://api.habtek.com.mx/somcback/src/tables/formulas/insert.php";
                     String jsonString = json.toString();
 
                     InsertFormulaTask insertFormulaTask = new InsertFormulaTask(new InsertFormulaTask.InsertFormulaListener() {
@@ -164,7 +164,7 @@ public class registerformula extends AppCompatActivity implements adapterNewForm
                             }
                         }, formulaData, input2);
 
-                        task.execute("https://api.habtek.com.mx/somcback/tables/ingredientes/search.php", input1);
+                        task.execute("https://api.habtek.com.mx/somcback/src/tables/ingredientes/search.php", input1);
                     }
                 } else {
                     Toast.makeText(registerformula.this, "Faltan datos por llenar", Toast.LENGTH_SHORT).show();

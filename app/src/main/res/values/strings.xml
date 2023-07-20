@@ -19,6 +19,7 @@
     </string-array>
 
     <string-array name="status_produccion">
+        <item>Mis opciones</item>
         <item>Marcar como surtido</item>
 
     </string-array>

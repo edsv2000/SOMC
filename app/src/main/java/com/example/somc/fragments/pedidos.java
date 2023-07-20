@@ -86,7 +86,7 @@ public class pedidos extends Fragment implements adapterPedidos.ListenerPedido {
                     e.printStackTrace();
                 }
 
-                String urlString = "https://api.habtek.com.mx/somcback/tables/produccion/insert.php"; // Reemplaza con la URL de tu API
+                String urlString = "https://api.habtek.com.mx/somcback/src/tables/produccion/insert.php"; // Reemplaza con la URL de tu API
                 setProduccion produccion = new setProduccion();
                 produccion.execute(urlString, jsonData.toString());
 
@@ -99,7 +99,7 @@ public class pedidos extends Fragment implements adapterPedidos.ListenerPedido {
                     e.printStackTrace();
                 }
 
-                String urlString2 = "https://api.habtek.com.mx/somcback/tables/pedidos/updateStatus.php";
+                String urlString2 = "https://api.habtek.com.mx/somcback/src/tables/pedidos/updateStatus.php";
                 CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
                 estado.execute(urlString2, jsonData2.toString());
 
@@ -114,7 +114,7 @@ public class pedidos extends Fragment implements adapterPedidos.ListenerPedido {
                     e.printStackTrace();
                 }
 
-                String urlString = "https://api.habtek.com.mx/somcback/tables/pedidos/updateStatus.php";
+                String urlString = "https://api.habtek.com.mx/somcback/src/tables/pedidos/updateStatus.php";
                 CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
                 estado.execute(urlString, jsonData.toString());
             }else if (selectedItem.equals("Cancelar")) {
@@ -127,7 +127,33 @@ public class pedidos extends Fragment implements adapterPedidos.ListenerPedido {
                     e.printStackTrace();
                 }
 
-                String urlString = "https://api.habtek.com.mx/somcback/tables/pedidos/updateStatus.php";
+                String urlString = "https://api.habtek.com.mx/somcback/src/tables/pedidos/updateStatus.php";
+                CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
+                estado.execute(urlString, jsonData.toString());
+            }else if (selectedItem.equals("En ruta")) {
+                // Crea el JSON con los datos a enviar al servidor
+                JSONObject jsonData = new JSONObject();
+                try {
+                    jsonData.put("ID_pedido", data.getNumero());
+                    jsonData.put("Estado", "En ruta");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                String urlString = "https://api.habtek.com.mx/somcback/src/tables/pedidos/updateStatus.php";
+                CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
+                estado.execute(urlString, jsonData.toString());
+            }else if (selectedItem.equals("Entregado")) {
+                // Crea el JSON con los datos a enviar al servidor
+                JSONObject jsonData = new JSONObject();
+                try {
+                    jsonData.put("ID_pedido", data.getNumero());
+                    jsonData.put("Estado", "Entregado");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                String urlString = "https://api.habtek.com.mx/somcback/src/tables/pedidos/updateStatus.php";
                 CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
                 estado.execute(urlString, jsonData.toString());
             }
@@ -266,7 +292,7 @@ public class pedidos extends Fragment implements adapterPedidos.ListenerPedido {
 
     public class PedidosRequest extends AsyncTask<Void, Void, JSONArray> {
 
-        private static final String API_URL = "https://api.habtek.com.mx/somcback/tables/pedidos/getAll.php";
+        private static final String API_URL = "https://api.habtek.com.mx/somcback/src/tables/pedidos/getAll.php";
 
         @Override
         protected JSONArray doInBackground(Void... params) {

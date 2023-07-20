@@ -60,7 +60,7 @@ public class register extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    String url = "https://api.habtek.com.mx/somcback/tables/usuarios/insert.php";
+                    String url = "https://api.habtek.com.mx/somcback/src/tables/usuarios/insert.php";
                     String jsonString = json.toString();
                     InsertUserTask insertUserTask = new InsertUserTask(new InsertUserTask.InsertUserListener() {
                         @Override

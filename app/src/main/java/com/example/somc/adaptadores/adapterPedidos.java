@@ -97,15 +97,30 @@ public class adapterPedidos extends RecyclerView.Adapter<adapterPedidos.ViewHold
 
             if (data.getStatus().equals("Pendiente")) {
                 adapter.add("Autorizar pedido");
+                adapter.add("Cancelar");
             } else if (data.getStatus().equals("Autorizado")) {
                 adapter.add("Mandar a producción");
+                adapter.add("Cancelar");
+            }else if (data.getStatus().equals("Surtido")){
+                adapter.add("En ruta");
+            }else if (data.getStatus().equals("En ruta")){
+                adapter.add("Entregado");
+            }else if(data.getStatus().equals("En produccion")){
+                adapter.add("Cancelar");
             }
 
-            if (!data.getStatus().equals("Cancelado")){
-                adapter.add("Cancelar");
-            }else{
+
+            if(data.getStatus().equals("Cancelado") || data.getStatus().equals("Entregado")){
                 option.setVisibility(View.INVISIBLE);
+            }else{
+                option.setVisibility(View.VISIBLE);
             }
+
+
+
+
+
+
 
             option.setAdapter(adapter);
 

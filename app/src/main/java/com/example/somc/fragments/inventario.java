@@ -161,7 +161,7 @@ public class inventario extends Fragment {
         @Override
         protected ArrayList<inventarioData> doInBackground(Void... voids) {
             // Realizar la llamada a la API y obtener la respuesta JSON
-            String apiUrl = "http://api.habtek.com.mx/somcback/tables/inventario/getAll.php";
+            String apiUrl = "http://api.habtek.com.mx/somcback/src/tables/inventario/getAll.php";
             StringBuilder response = new StringBuilder();
 
             try {
@@ -237,7 +237,7 @@ public class inventario extends Fragment {
     public static class UpdateInventoryTask extends AsyncTask<JSONObject, Void, String> {
 
 
-        private static final String SERVER_URL = "http://api.habtek.com.mx/somcback/tables/ingredientes/update.php";
+        private static final String SERVER_URL = "http://api.habtek.com.mx/somcback/src/tables/ingredientes/update.php";
 
         private OnUpdateInventoryListener listener;
 

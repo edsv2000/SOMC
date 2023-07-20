@@ -90,7 +90,7 @@ public class registerInventario extends AppCompatActivity {
             String jsonInputString = params[0];
 
             try {
-                URL url = new URL("http://api.habtek.com.mx/somcback/tables/ingredientes/insert.php");
+                URL url = new URL("http://api.habtek.com.mx/somcback/src/tables/ingredientes/insert.php");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
                 connection.setRequestProperty("Content-Type", "application/json");

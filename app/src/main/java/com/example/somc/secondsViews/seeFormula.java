@@ -25,7 +25,7 @@ import java.net.URL;
 public class seeFormula extends AppCompatActivity {
 
     private static final String TAG = "seeFormula";
-    private static final String API_URL = "http://api.habtek.com.mx/somcback/tables/formulas/search.php";
+    private static final String API_URL = "http://api.habtek.com.mx/somcback/src/tables/formulas/search.php";
 
     private EditText idFormulaEditText;
     private Button searchButton;

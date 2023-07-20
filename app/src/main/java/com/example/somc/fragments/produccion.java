@@ -7,14 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.somc.R;
-import com.example.somc.adaptadores.adapterPedidos;
 import com.example.somc.adaptadores.adapterProduccion;
 import com.example.somc.data.pedidosData;
 import com.example.somc.data.produccionData;
@@ -27,6 +25,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class produccion extends Fragment {
+public class produccion extends Fragment implements  adapterProduccion.ListenerProduction{
     adapterProduccion adapter;
     private ArrayList<produccionData> produccionData_list = new ArrayList<>();
     public produccion() {
@@ -53,18 +52,103 @@ public class produccion extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_produccion, container, false);
 
-
-        RecyclerView recyclerView  = view.findViewById(R.id.recyclerProduccion);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerProduccion);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        // Configurar el adaptador con el listener antes de realizar la solicitud de la API
         adapter = new adapterProduccion(produccionData_list);
-
-
-        FetchPedidosEnProduccionTask task = new FetchPedidosEnProduccionTask();
-        task.execute("https://api.habtek.com.mx/somcback/tables/produccion/getAll.php");
-
+        adapter.setListenerProduccion(this); // Configura el ListenerProduction en el adaptador
         recyclerView.setAdapter(adapter);
 
+        FetchPedidosEnProduccionTask task = new FetchPedidosEnProduccionTask();
+        task.execute("https://api.habtek.com.mx/somcback/src/tables/produccion/getAll.php");
+
         return view;
+    }
+
+
+
+    @Override
+    public void onListenerProduction(produccionData data, String selectedItem) {
+       if (data.getStatus().equals("En produccion")){
+           // Crea el JSON con los datos a enviar al servidor
+           JSONObject jsonData = new JSONObject();
+           try {
+               jsonData.put("ID_pedido", data.getNumeroPedido());
+               jsonData.put("Estado", "Surtido");
+           } catch (JSONException e) {
+               e.printStackTrace();
+           }
+
+           String urlString = "https://api.habtek.com.mx/somcback/src/tables/pedidos/updateStatus.php";
+           CambiarEstadoPedidoAsyncTask estado = new CambiarEstadoPedidoAsyncTask();
+           estado.execute(urlString, jsonData.toString());
+       }
+    }
+
+    public class CambiarEstadoPedidoAsyncTask extends AsyncTask<String, Void, String> {
+
+        private static final String TAG = "CambiarEstadoPedido";
+
+        @Override
+        protected String doInBackground(String... params) {
+            String urlString = params[0];
+            String jsonData = params[1];
+
+            String result = "";
+
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setRequestProperty("Content-Type", "application/json");
+                urlConnection.setDoOutput(true);
+
+                OutputStream outputStream = urlConnection.getOutputStream();
+                outputStream.write(jsonData.getBytes());
+                outputStream.flush();
+                outputStream.close();
+
+                int responseCode = urlConnection.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    InputStream inputStream = urlConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line);
+                    }
+                    bufferedReader.close();
+                    inputStream.close();
+
+                    result = stringBuilder.toString();
+                } else {
+                    result = "Error en la conexión: " + responseCode;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                result = "Error en la conexión: " + e.getMessage();
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                String status = jsonObject.getString("status");
+                String message = jsonObject.getString("message");
+
+                // Aquí puedes manejar la respuesta del servidor según tus necesidades
+
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private class FetchPedidosEnProduccionTask extends AsyncTask<String, Void, String> {

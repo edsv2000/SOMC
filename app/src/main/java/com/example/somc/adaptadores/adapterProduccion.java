@@ -5,6 +5,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -23,16 +24,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class adapterProduccion extends RecyclerView.Adapter<adapterProduccion.ViewHolder> {
+
     private ArrayList<produccionData> datos;
+    private ListenerProduction listenerProduccion;
 
     public adapterProduccion(ArrayList<produccionData> datos) {
         this.datos = datos;
+    }
+
+    public void setListenerProduccion(ListenerProduction listener) {
+        this.listenerProduccion = listener;
     }
 
     @NonNull
@@ -53,14 +57,12 @@ public class adapterProduccion extends RecyclerView.Adapter<adapterProduccion.Vi
         return datos.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView numero_produccion;
         private TextView numero_lote;
         private TextView numero_pedido;
         private TextView estado;
-
         private TableLayout details;
-
         private Spinner spinner;
 
         public ViewHolder(View itemView) {
@@ -71,6 +73,29 @@ public class adapterProduccion extends RecyclerView.Adapter<adapterProduccion.Vi
             estado = itemView.findViewById(R.id.estado);
             details = itemView.findViewById(R.id.tableLayout);
             spinner = itemView.findViewById(R.id.spinnerOption);
+
+            // Spinner status
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(itemView.getContext(), R.array.status_produccion, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @SuppressLint("ResourceAsColor")
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                    if (position != 0) { // Omitir el primer elemento si no es necesario (puede ser un hint)
+                        String selectedItem = (String) adapterView.getItemAtPosition(position);
+                        if (listenerProduccion != null) {
+                            listenerProduccion.onListenerProduction(datos.get(getAdapterPosition()), selectedItem);
+                        }
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    // Acción cuando no se ha seleccionado ningún ítem
+                }
+            });
         }
 
         @SuppressLint("ResourceAsColor")
@@ -81,14 +106,17 @@ public class adapterProduccion extends RecyclerView.Adapter<adapterProduccion.Vi
             estado.setText(data.getStatus());
 
 
-            // Spinner status
+// Spinner status
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(itemView.getContext(), R.array.status_produccion, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
 
+
             // Suponiendo que tienes un JSONArray llamado "jsonArray" con los datos
             try {
                 JSONArray jsonArray = data.getDetails(); // Obtén el JSONArray desde donde lo estés obteniendo (por ejemplo, una API o una base de datos)
+
+
 
                 // Agregar los datos específicos del JSONArray a la tabla
                 for (int i = 0; i < jsonArray.length(); i++) {
@@ -116,7 +144,6 @@ public class adapterProduccion extends RecyclerView.Adapter<adapterProduccion.Vi
                     // Crea celdas para "nombre" y "ciudad" y agrégales los datos
                     TextView textViewId = new TextView(itemView.getContext());
                     textViewId.setText(id);
-
                     textViewId.setPadding(10, 10, 10, 10);
                     textViewId.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), android.R.color.background_light));
                     textViewId.setGravity(Gravity.CENTER);
@@ -141,10 +168,10 @@ public class adapterProduccion extends RecyclerView.Adapter<adapterProduccion.Vi
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
-
-
         }
+    }
+
+    public interface ListenerProduction {
+        void onListenerProduction(produccionData data, String selectedItem);
     }
 }
